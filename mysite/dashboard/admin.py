@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import tbl_Employee
+from .models import Diretoria
 
 
 # Register your models here.

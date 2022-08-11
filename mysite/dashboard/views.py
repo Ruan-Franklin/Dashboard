@@ -1,4 +1,4 @@
-from .models import tbl_Employee
+from .models import Diretoria
 #from .services import ImportToDatabase
 import datetime as dt
 import pandas as pd
@@ -24,12 +24,20 @@ def Import_csv(request):
             print(type(empexceldata))
             dbframe = empexceldata
             for dbframe in dbframe.itertuples():
+                '''
+                nome = models.CharField(max_length=10, default='')
+    turmas = models.CharField(max_length=150,null=True)
+    salas = models.CharField(max_length=100,null=True)    
+    professores = models.CharField(max_length=100,null=True)
+    cargas = models.CharField(max_length=30,null=True)        
+    DOB = models.DateField(null=True, blank=True)     
+                '''
                  
                 fromdate_time_obj = dt.datetime.strptime(dbframe.DOB, '%d-%m-%Y')
-                obj = tbl_Employee.objects.create(Empcode=dbframe.Empcode,firstName=dbframe.firstName, middleName=dbframe.middleName,
-                                                lastName=dbframe.lastName, email=dbframe.email, phoneNo=dbframe.phoneNo, address=dbframe.address, 
-                                                exprience=dbframe.exprience, gender=dbframe.gender, DOB=fromdate_time_obj,
-                                                qualification=dbframe.qualification)
+                obj = Diretoria.objects.create(nome=dbframe.nome, turmas=dbframe.turmas,
+                                                salas=dbframe.salas,  professores=dbframe.professores, cargas=dbframe.cargas, 
+                                                DOB=fromdate_time_obj,
+                                                )
                 print(type(obj))
                 obj.save()
  
