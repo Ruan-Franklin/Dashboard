@@ -20,3 +20,12 @@ class tbl_Employee(models.Model):
         return self.firstName
                  
     objects = models.Manager()
+'''
+    class Diretoria(models.Model):
+      nome=models.CharField(max_length=255),
+      turmas=models.CharField(max_length=2),
+      salas=models.CharField(max_length=2),
+      professores= models.IntegerField(blank=True, null=True)
+      carga=models.IntegerField(blank=True, null= True)
+
+'''

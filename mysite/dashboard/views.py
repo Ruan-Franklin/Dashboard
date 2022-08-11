@@ -1,16 +1,20 @@
 from .models import tbl_Employee
+#from .services import ImportToDatabase
 import datetime as dt
 import pandas as pd
 import os
+from django.shortcuts import render
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+
  
 def Import_csv(request):
+    
     print('s')               
     try:
         if request.method == 'POST' and request.FILES['myfile']:
-          
-            myfile = request.FILES['myfile']        
+            myfile = request.FILES['myfile']
+           # meuarquivo=import_data()        
             fs = FileSystemStorage()
             filename = fs.save(myfile.name, myfile)
             uploaded_file_url = fs.url(filename)
@@ -36,3 +40,4 @@ def Import_csv(request):
         print(identifier)
      
     return render(request, 'importexcel.html',{})
+
